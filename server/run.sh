@@ -5,7 +5,6 @@ function act (){
 }
 
 act venv
-python server.py &
-python main.py > /dev/null &
+python serial_server.py &
+python web_server.py > /dev/null &
 deactivate
-
