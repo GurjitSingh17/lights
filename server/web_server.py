@@ -88,7 +88,7 @@ def fire():
 		write_data(endcode_data(3))
 		return "done", 200
 	elif request.method == 'GET':
-		return render_template()
+		return render_template("control.html", target="fire")
 
 @app.route("/rainbow", methods=["POST","GET"])
 def rainbow():
@@ -194,14 +194,14 @@ def dither():
 @app.route("/threeZone", methods=["POST","GET"])
 def threeZone():
 	if request.method == 'POST':
-		red1, green1, blue1 = get_color(request.form.get("color1"))
-		red2, green2, blue2 = get_color(request.form.get("color2"))
-		red3, green3, blue3 = get_color(request.form.get("color3"))
+		red1, green1, blue1 = get_color(request.form.get("color 1"))
+		red2, green2, blue2 = get_color(request.form.get("color 2"))
+		red3, green3, blue3 = get_color(request.form.get("color 3"))
 		write_data(endcode_data(81, red1, green1, blue1, red2, green2, blue2, red3, green3, blue3))
 		return "done", 200
 	elif request.method == 'GET':
 		colors = [{"name":"color 1"}, {"name":"color 2"}, {"name":"color 3"}]
-		return render_template("control.html", target="solidColor", colors=colors)
+		return render_template("control.html", target="threeZone", colors=colors)
 
 @app.route('/js/<path:path>')
 def send_js(path):
